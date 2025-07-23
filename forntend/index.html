@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEO - Personal Assistant</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div id="login-page" class="active">
+        <div class="login-box">
+            <div class="logo">LEO</div>
+            <p class="tagline">Your Personal AI Assistant</p>
+            <button id="google-login-btn"><img src="assets/google-logo.png" alt="Google icon"> Sign in with Google</button>
+            <button id="guest-login-btn">Continue as Guest</button>
+            <p id="login-error-message" style="color: var(--accent-color); font-size: 0.9rem; margin-top: 1rem; height: 1.2rem;"></p>
+        </div>
+    </div>
+
+    <div id="chat-app-container">
+        <div class="app-wrapper">
+            <aside id="sidebar">
+                <div class="sidebar-logo">
+                    <img src="assets/leo-logo.jpg" alt="LEO Logo">
+                    <span>LEO</span>
+                </div>
+                <button id="new-chat-btn">+ New Chat</button>
+                <div id="weather-widget">
+                    <div class="weather-main">
+                        <img id="weather-icon" src="https://placehold.co/40x40/ccc/ccc" alt="weather icon">
+                        <div>
+                            <p id="weather-temp" class="weather-temp">--°C</p>
+                            <p id="weather-city" class="weather-city">Loading...</p>
+                        </div>
+                    </div>
+                    <p id="weather-desc" class="weather-desc">Fetching weather data...</p>
+                </div>
+                <h2 class="sidebar-heading">Recent</h2>
+                <div id="chat-history-list" class="scrollbar"></div>
+                <div class="sidebar-setting">
+                    <label for="temp-slider">Creativity (Temp)</label>
+                    <div class="slider-container">
+                        <input type="range" id="temp-slider" min="0" max="1" step="0.1" value="0.9">
+                        <span id="temp-value">0.9</span>
+                    </div>
+                </div>
+                <div class="sidebar-footer">
+                    <button id="user-profile-button" class="user-profile">
+                        <img id="user-avatar" class="user-avatar" src="">
+                        <span id="user-name" class="user-name">Guest</span>
+                        <span id="logout-btn" class="logout-btn">⏻</span>
+                    </button>
+                </div>
+                <p id="app-version" style="font-size: 0.7rem; text-align: center; color: var(--secondary-text-color); margin-top: 0.5rem;"></p>
+            </aside>
+
+            <main id="chat-container">
+                <div id="chat-log-wrapper" class="scrollbar">
+                    <div id="ai-chat-log"></div>
+                </div>
+                <div class="prompt-area">
+                    <div id="image-preview-container">
+                        <img id="image-preview" src="" alt="Image preview"/>
+                        <button id="remove-image-btn">&times;</button>
+                    </div>
+                    <div id="filter-container">
+                        <button class="filter-btn" data-filter="grayscale">Grayscale</button>
+                        <button class="filter-btn" data-filter="sepia">Sepia</button>
+                        <button class="filter-btn" data-filter="invert">Invert</button>
+                        <button class="filter-btn" data-filter="reset">Reset</button>
+                    </div>
+                    <form id="chat-form">
+                        <div class="prompt-wrapper">
+                            <div class="prompt-input-container">
+                                <input type="file" id="image-upload-input" hidden accept="image/*">
+                                <button type="button" id="image-upload-btn" class="input-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                                </button>
+                                <textarea id="prompt-input" placeholder="Enter a prompt here..." rows="1"></textarea>
+                                <button type="button" id="mic-btn" class="input-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg>
+                                </button>
+                            </div>
+                            <button type="submit" id="send-btn" class="send-button" disabled>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2 .01 7z"/></svg>
+                            </button>
+                        </div>
+                    </form>
+                    <p class="footer-text">LEO may display inaccurate info. Always double-check its responses.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+    <canvas id="image-canvas" style="display: none;"></canvas>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
