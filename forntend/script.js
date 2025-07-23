@@ -4,7 +4,7 @@ import { getFirestore, doc, collection, addDoc, query, orderBy, getDocs, onSnaps
 
 // --- CONFIG & API KEYS ---
 const APP_VERSION = "4.1.0 (Secure Backend)";
-const BACKEND_URL = "http://localhost:3000"; // URL for your local backend server
+const BACKEND_URL = "https://leo-backend-wgay.onrender.com"; // URL for your local backend server
 
 // ⚠️ IMPORTANT: Fill in your public-facing Firebase config here.
 const firebaseConfig = {
